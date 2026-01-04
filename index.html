@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Jailbreak CVE Database</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0f0f14;
+      color: #eaeaf0;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    p {
+      text-align: center;
+      color: #aaa;
+      margin-bottom: 30px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #1a1a22;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 12px;
+      border-bottom: 1px solid #2a2a35;
+      text-align: left;
+    }
+
+    th {
+      background: #222233;
+      font-weight: 600;
+    }
+
+    tr:hover {
+      background: #262638;
+    }
+
+    .tag {
+      background: #3a3aff;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 12px;
+      color: white;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>📦 Jailbreak CVE Database</h1>
+  <p>Known CVEs leveraged by iOS jailbreaks and exploits</p>
+
+  <input
+    type="text"
+    id="search"
+    placeholder="Search CVE, jailbreak, exploit type, iOS version..."
+    onkeyup="filterTable()"
+  >
+
+  <table id="cveTable">
+    <thead>
+      <tr>
+        <th>CVE</th>
+        <th>Jailbreak / Exploit</th>
+        <th>Exploit Type</th>
+        <th>Affected iOS</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>CVE-2019-6225</td>
+        <td>checkm8</td>
+        <td><span class="tag">BootROM</span></td>
+        <td>A5–A11 (iOS 12–17)</td>
+      </tr>
+      <tr>
+        <td>CVE-2021-30860</td>
+        <td>FORCEDENTRY</td>
+        <td><span class="tag">Kernel</span></td>
+        <td>iOS 14.0–14.8</td>
+      </tr>
+      <tr>
+        <td>CVE-2021-30955</td>
+        <td>unc0ver / Taurine</td>
+        <td><span class="tag">Kernel</span></td>
+        <td>iOS 14.0–14.8.1</td>
+      </tr>
+      <tr>
+        <td>CVE-2020-27932</td>
+        <td>checkra1n</td>
+        <td><span class="tag">Kernel</span></td>
+        <td>iOS 13.x</td>
+      </tr>
+      <tr>
+        <td>CVE-2023-28206</td>
+        <td>kfd (Dopamine)</td>
+        <td><span class="tag">Kernel</span></td>
+        <td>iOS 15.0–16.5</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script>
+    function filterTable() {
+      const input = document.getElementById("search").value.toLowerCase();
+      const rows = document.querySelectorAll("#cveTable tbody tr");
+
+      rows.forEach(row => {
+        const text = row.innerText.toLowerCase();
+        row.style.display = text.includes(input) ? "" : "none";
+      });
+    }
+  </script>
+
+</body>
+</html>
